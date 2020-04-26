@@ -103,7 +103,6 @@ body {
   animation-duration: 1s;
 }
 
-#editor:hover,
 #editor:focus {
   opacity: 1;
 }
