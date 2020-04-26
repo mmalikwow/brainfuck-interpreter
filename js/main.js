@@ -76,11 +76,11 @@ function Start(string) {
 }
 
 function printf(char) {
-  alert(char); //weird
+  alert(String.fromCharCode(char)); //weird
 }
 
 function scanf() {
-  return prompt();
+  return prompt().charCodeAt(0);
 }
 
 function testChar(char) {
