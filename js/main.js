@@ -19,8 +19,10 @@ function Run(tsrc) {
 
   // Looping variables
   let charIndex = 0;
-  while (src[charIndex]) {
+  while (src[charIndex] !== undefined) {
     const char = src[charIndex];
+
+    let skipAdd = false;
 
     switch (char) {
       case "<":
@@ -46,9 +48,24 @@ function Run(tsrc) {
       case ",":
         tape[pointerIndex] = scanf();
         break;
+
+      case "[":
+        callStack.push(charIndex);
+
+        if (tape[pointerIndex] == 0) {
+          const nextSqBracket = getNextSqBracket(src.slice(charIndex, src.length)) + charIndex;
+          if (nextSqBracket) charIndex = nextSqBracket;
+          else debug(`Unexpected end of input`);
+        }
+        break;
+
+      case "]":
+        charIndex = callStack.pop();
+        skipAdd = true;
+        break;
     }
 
-    charIndex++;
+    if (!skipAdd) charIndex++;
   }
 
   return tape;
@@ -77,4 +94,14 @@ function testChar(char) {
     char == "[" ||
     char == "]"
   );
+}
+
+function getNextSqBracket(str) {
+  for (let i = 0; i < str.length; i++) if (str[i] == "]") return i;
+
+  return null;
+}
+
+function debug(e) {
+  throw e;
 }
