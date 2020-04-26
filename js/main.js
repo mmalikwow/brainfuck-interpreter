@@ -80,7 +80,7 @@ function printf(char) {
 }
 
 function scanf() {
-  return prompt().charCodeAt(0);
+  return prompt("Enter your input").charCodeAt(0);
 }
 
 function testChar(char) {
