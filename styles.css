@@ -1,0 +1,193 @@
+:root {
+  --main-width: 800px;
+
+  overflow-x: hidden;
+}
+
+body {
+  background: #333;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  /* Position */
+  position: absolute;
+  left: 50%;
+  top: 3%;
+  transform: translateX(-50%) translateY(-3%);
+  padding: 15px;
+
+  /* Dimensions */
+  width: var(--main-width);
+
+  /* Style */
+  /*border: 2px solid white;*/
+
+  /* Animation */
+  animation-name: buttonsEntry;
+  animation-duration: 1s;
+}
+
+#buttons button {
+  cursor: pointer;
+
+  width: 100px;
+  height: 50px;
+
+  background: none;
+  border: 2px solid #2980b9;
+
+  color: white;
+  font-weight: bold;
+
+  border-radius: 10px;
+
+  transition-duration: 1s;
+}
+
+#Run {
+  overflow: hidden; /*Useless*/
+}
+
+#Run:hover {
+  border-color: #1abc9c;
+}
+
+#ShowC {
+  font-size: 10px;
+}
+
+#ShowC:hover {
+  border-color: #ecf0f1;
+}
+
+#Compile {
+  overflow: hidden; /*Useless*/
+}
+
+#Compile:hover {
+  border-color: #e74c3c;
+}
+
+#editor {
+  /* Position */
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%) translateY(-25%);
+
+  /* Dimensions */
+  width: var(--main-width);
+  height: 60%;
+  padding: 20px;
+  border: 2px #2980b9 solid;
+  resize: none;
+
+  /* Text */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: white;
+  overflow: auto;
+
+  /* Style */
+  opacity: 0.5;
+  background-color: #2c3e50;
+
+  /* Transition */
+  transition-delay: 100ms;
+  transition-duration: 500ms;
+
+  /* Animation */
+  animation-name: editorEntry;
+  animation-duration: 1s;
+}
+
+#editor:hover,
+#editor:focus {
+  opacity: 1;
+}
+
+#editor::selection {
+  color: #2c3e50;
+  background-color: white;
+  border-radius: 22px;
+}
+
+#output {
+  /* Position */
+  position: absolute;
+  left: 50%;
+  top: 85%;
+  transform: translateX(-50%) translateY(-25%);
+
+  /* Dimensions */
+  width: var(--main-width);
+  height: 10%;
+  padding: 20px;
+  border: 2px #2980b9 solid;
+  resize: none;
+
+  /* Text */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: white;
+  overflow: hidden;
+
+  /* Style */
+  opacity: 0.5;
+  background-color: none;
+
+  /* Transition */
+  transition-delay: 100ms;
+  transition-duration: 500ms;
+}
+
+#output:hover {
+  opacity: 1;
+}
+
+#input {
+  /* Position */
+  position: absolute;
+  left: 50%;
+  top: 93%;
+  transform: translateX(-50%) translateY(-25%);
+
+  /* Dimensions */
+  width: var(--main-width);
+  height: 20px;
+  padding: 20px;
+  border: 2px #2980b9 solid;
+  resize: none;
+
+  /* Text */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: white;
+
+  /* Style */
+  opacity: 0.5;
+  background: none;
+
+  /* Transition */
+  transition-delay: 100ms;
+  transition-duration: 500ms;
+}
+
+#input:hover,
+#input:focus {
+  opacity: 1;
+}
+
+@keyframes editorEntry {
+  0% {
+    left: -50%;
+  }
+}
+
+@keyframes buttonsEntry {
+  0% {
+    left: 100%;
+  }
+}
