@@ -88,8 +88,12 @@ function Run() {
 }
 
 // OUTPUT
+function alertUser(char) {
+  alert(String.fromCharCode(char));
+}
+
 function printf(char) {
-  alert(String.fromCharCode(char)); //weird
+  output.value += String.fromCharCode(char);
 }
 
 // INPUT
