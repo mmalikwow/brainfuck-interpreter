@@ -1,5 +1,6 @@
 const editor = document.getElementById("editor");
 const output = document.getElementById("output");
+const screen = document.getElementById("screen");
 const input = document.getElementById("input");
 input.currentChar = 0;
 
@@ -83,8 +84,9 @@ function Start(string) {
 
 // Buttons functions
 function Run() {
+  Utils.clearScreen();
   const src = Compile(editor.value);
-  return Interpret(src);
+  console.log(Interpret(src));
 }
 
 // OUTPUT
@@ -93,7 +95,7 @@ function alertUser(char) {
 }
 
 function printf(char) {
-  output.value += String.fromCharCode(char);
+  screen.innerText += String.fromCharCode(char);
 }
 
 // INPUT
@@ -127,6 +129,10 @@ const Utils = {
     for (let i = 0; i < str.length; i++) if (str[i] == "]") return i;
 
     return null;
+  },
+
+  clearScreen() {
+    screen.innerText = "";
   }
 };
 
