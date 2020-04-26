@@ -3,6 +3,7 @@ const output = document.getElementById("output");
 const input = document.getElementById("input");
 input.currentChar = 0;
 
+// Useful code
 function Compile(txt) {
   let string = "";
   txt
@@ -75,19 +76,23 @@ function Interpret(tsrc) {
   return tape;
 }
 
+// Temp functions
 function Start(string) {
   console.log(Interpret(Compile(string)));
 }
 
+// Buttons functions
 function Run() {
   const src = Compile(editor.value);
   return Interpret(src);
 }
 
+// OUTPUT
 function printf(char) {
   alert(String.fromCharCode(char)); //weird
 }
 
+// INPUT
 function getUserInput() {
   return prompt("Enter your input").charCodeAt(0);
 }
@@ -97,6 +102,8 @@ function scanf() {
   if (val) return val.charCodeAt(0);
   else debug(new Error("Not enough input"));
 }
+
+// UTILS
 
 const Utils = {
   testChar(char) {
