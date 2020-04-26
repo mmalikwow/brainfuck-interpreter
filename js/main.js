@@ -1,16 +1,19 @@
 const editor = document.getElementById("editor");
+const output = document.getElementById("output");
+const input = document.getElementById("input");
+input.currentChar = 0;
 
 function Compile(txt) {
   let string = "";
   txt
     .split("")
-    .filter(char => testChar(char))
+    .filter(char => Utils.testChar(char))
     .forEach(char => (string += char));
 
   return string;
 }
 
-function Run(tsrc) {
+function Interpret(tsrc) {
   const src = tsrc;
   // Brainfuck Variables
   const tape = new Int8Array(20).fill(0);
@@ -53,7 +56,8 @@ function Run(tsrc) {
         callStack.push(charIndex);
 
         if (tape[pointerIndex] == 0) {
-          const nextSqBracket = getNextSqBracket(src.slice(charIndex, src.length)) + charIndex;
+          const nextSqBracket =
+            Utils.getNextSqBracket(src.slice(charIndex, src.length)) + charIndex;
           if (nextSqBracket) charIndex = nextSqBracket;
           else debug(`Unexpected end of input`);
         }
@@ -72,35 +76,48 @@ function Run(tsrc) {
 }
 
 function Start(string) {
-  console.log(Run(Compile(string)));
+  console.log(Interpret(Compile(string)));
+}
+
+function Run() {
+  const src = Compile(editor.value);
+  return Interpret(src);
 }
 
 function printf(char) {
   alert(String.fromCharCode(char)); //weird
 }
 
-function scanf() {
+function getUserInput() {
   return prompt("Enter your input").charCodeAt(0);
 }
 
-function testChar(char) {
-  return (
-    char == "<" ||
-    char == ">" ||
-    char == "+" ||
-    char == "-" ||
-    char == "." ||
-    char == "," ||
-    char == "[" ||
-    char == "]"
-  );
+function scanf() {
+  const val = input.value[input.currentChar];
+  if (val) return val.charCodeAt(0);
+  else debug(new Error("Not enough input"));
 }
 
-function getNextSqBracket(str) {
-  for (let i = 0; i < str.length; i++) if (str[i] == "]") return i;
+const Utils = {
+  testChar(char) {
+    return (
+      char == "<" ||
+      char == ">" ||
+      char == "+" ||
+      char == "-" ||
+      char == "." ||
+      char == "," ||
+      char == "[" ||
+      char == "]"
+    );
+  },
 
-  return null;
-}
+  getNextSqBracket(str) {
+    for (let i = 0; i < str.length; i++) if (str[i] == "]") return i;
+
+    return null;
+  }
+};
 
 function debug(e) {
   throw e;
