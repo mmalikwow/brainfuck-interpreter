@@ -126,9 +126,7 @@ const Utils = {
   // },
 
   testChar(char) {
-    console.log(char);
     const res = /[<>+\-.,\[\]]/.test(char);
-    console.log(res);
     return res;
   },
 
