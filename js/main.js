@@ -112,17 +112,24 @@ function scanf() {
 // UTILS
 
 const Utils = {
+  // testChar(char) {
+  //   return (
+  //     char == "<" ||
+  //     char == ">" ||
+  //     char == "+" ||
+  //     char == "-" ||
+  //     char == "." ||
+  //     char == "," ||
+  //     char == "[" ||
+  //     char == "]"
+  //   );
+  // },
+
   testChar(char) {
-    return (
-      char == "<" ||
-      char == ">" ||
-      char == "+" ||
-      char == "-" ||
-      char == "." ||
-      char == "," ||
-      char == "[" ||
-      char == "]"
-    );
+    console.log(char);
+    const res = /[<>+\-.,\[\]]/.test(char);
+    console.log(res);
+    return res;
   },
 
   getNextSqBracket(str) {
