@@ -112,18 +112,6 @@ function scanf() {
 // UTILS
 
 const Utils = {
-  // testChar(char) {
-  //   return (
-  //     char == "<" ||
-  //     char == ">" ||
-  //     char == "+" ||
-  //     char == "-" ||
-  //     char == "." ||
-  //     char == "," ||
-  //     char == "[" ||
-  //     char == "]"
-  //   );
-  // },
 
   testChar(char) {
     return /[<>+\-.,\[\]]/.test(char);
