@@ -126,8 +126,7 @@ const Utils = {
   // },
 
   testChar(char) {
-    const res = /[<>+\-.,\[\]]/.test(char);
-    return res;
+    return /[<>+\-.,\[\]]/.test(char);
   },
 
   getNextSqBracket(str) {
